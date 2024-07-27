@@ -3,20 +3,15 @@ public class Main {
 
         InputHandler inputHandler = new InputHandler();
 
+        Player playerA = inputHandler.createPlayer("Player A", "Player 1");
         
-        // Create Player A
-        Player playerA = inputHandler.createPlayer("Player A");
-
-        // Create Player B
-        Player playerB = inputHandler.createPlayer("Player B");
+        Player playerB = inputHandler.createPlayer("Player B", "Player 2");
 
         // Check if attributes are identical and then declare draw as it was mentioned in the problem statement that the player who has lower health will attach first
         if (inputHandler.checkForDraw(playerA, playerB)) {
             inputHandler.close();
             return; 
         }
-    
-
 
         Arena arena = new Arena(playerA, playerB);
         arena.startMatch();

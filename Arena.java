@@ -8,23 +8,12 @@ public class Arena {
     }
 
     public void startMatch() {
-        Player attacker = determineFirstAttacker();
-        Player defender = (attacker == player1) ? player2 : player1;
         Dice dice = new Dice();
-
-        while (attacker.isAlive() && defender.isAlive()) {
-            System.out.println(attacker + " attacks " + defender);
-            attacker.attack(defender, dice);
-
-            if (!defender.isAlive()){
-                break;
-            }
-
-            Player temp = attacker;
-            attacker = defender;
-            defender = temp;
+        while (player1.isAlive() && player2.isAlive()) {
+            player1.attack(player2, dice);
+            if (!player2.isAlive()) break;
+            player2.attack(player1, dice);
         }
-
         displayMatchSummary();
     }
 

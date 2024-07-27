@@ -22,11 +22,11 @@ public class InputHandler {
         return value;
     }
 
-    public Player createPlayer(String playerName) {
+    public Player createPlayer(String playerName, String playerIdentifier) {
         int health = getIntInput("Enter health for " + playerName + " (1-100):");
         int strength = getIntInput("Enter strength for " + playerName + " (1-100):");
         int attack = getIntInput("Enter attack for " + playerName + " (1-100):");
-        return new Player(health, strength, attack);
+        return new Player(health, strength, attack, playerIdentifier);
     }
 
     public boolean checkForDraw(Player playerA, Player playerB) {
