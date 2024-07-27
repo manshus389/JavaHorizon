@@ -23,7 +23,7 @@ public class Player {
         int defenseRoll = dice.roll();
         int defended = this.strength * defenseRoll;
         int damageTaken = Math.max(incomingDamage - defended, 0);
-        this.health -= damageTaken;
+        this.health = Math.max(this.health - damageTaken, 0);
     }
 
     public int getHealth() {
