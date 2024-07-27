@@ -15,7 +15,10 @@ public class Arena {
         while (attacker.isAlive() && defender.isAlive()) {
             System.out.println(attacker + " attacks " + defender);
             attacker.attack(defender, dice);
-            if (!defender.isAlive()) break;
+
+            if (!defender.isAlive()){
+                break;
+            }
 
             Player temp = attacker;
             attacker = defender;
@@ -31,7 +34,17 @@ public class Arena {
 
     private void displayMatchSummary() {
         System.out.println("Match Over!");
+        System.out.println("Final Status:");
         System.out.println("Player 1: " + player1);
         System.out.println("Player 2: " + player2);
+
+        // Determine and display the winner
+    if (player1.isAlive() && !player2.isAlive()) {
+        System.out.println("The winner is player1");
+    } else if (player2.isAlive() && !player1.isAlive()) {
+        System.out.println("The winner is player2");
+    } else {
+        System.out.println("It's a draw!");
+    }
     }
 }
