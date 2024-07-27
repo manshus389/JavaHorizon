@@ -3,21 +3,29 @@ public class InputHandler {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public int getIntInput() {
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter an integer.");
-            scanner.next(); // Consume invalid input
+    public int getIntInput(String prompt) {
+        int value;
+        while (true) {
+            System.out.println(prompt);
+            if (scanner.hasNextInt()) {
+                value = scanner.nextInt();
+                if (value > 0 && value <= 100) {
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please enter a number between 1 and 100.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next(); // Consume invalid input
+            }
         }
-        return scanner.nextInt();
+        return value;
     }
 
     public Player createPlayer(String playerName) {
-        System.out.println("Enter health for " + playerName + ":");
-        int health = getIntInput();
-        System.out.println("Enter strength for " + playerName + ":");
-        int strength = getIntInput();
-        System.out.println("Enter attack for " + playerName + ":");
-        int attack = getIntInput();
+        int health = getIntInput("Enter health for " + playerName + " (1-100):");
+        int strength = getIntInput("Enter strength for " + playerName + " (1-100):");
+        int attack = getIntInput("Enter attack for " + playerName + " (1-100):");
         return new Player(health, strength, attack);
     }
 
