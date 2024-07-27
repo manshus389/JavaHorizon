@@ -14,21 +14,18 @@ public class Player {
     }
 
     public void attack(Player defender, Dice dice) {
-        int attackRoll = dice.roll();
-        int damage = this.attack * attackRoll;
+        int damage = attack * dice.roll();
         defender.defend(damage, dice);
     }
 
     public void defend(int incomingDamage, Dice dice) {
-        int defenseRoll = dice.roll();
-        int defended = this.strength * defenseRoll;
-        int damageTaken = Math.max(incomingDamage - defended, 0);
-        this.health = Math.max(this.health - damageTaken, 0);
+        int defended = strength * dice.roll();
+        health = Math.max(health - Math.max(incomingDamage - defended, 0), 0);
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public int getHealth() { return health; }
+    public int getStrength() { return strength; }
+    public int getAttack() { return attack; }
 
     @Override
     public String toString() {

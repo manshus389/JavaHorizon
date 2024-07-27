@@ -4,17 +4,18 @@ public class Main {
         InputHandler inputHandler = new InputHandler();
 
         //taking input of player A
-        int healthA = inputHandler.getHealth("Player A");
-        int strengthA = inputHandler.getStrength("Player A");
-        int attackA = inputHandler.getAttack("Player A");
+        // Create Player A
+        Player playerA = inputHandler.createPlayer("Player A");
 
-        // taking input of Player B
-        int healthB = inputHandler.getHealth("Player B");
-        int strengthB = inputHandler.getStrength("Player B");
-        int attackB = inputHandler.getAttack("Player B");
+        // Create Player B
+        Player playerB = inputHandler.createPlayer("Player B");
 
-        Player playerA = new Player(healthA, strengthA, attackA);
-        Player playerB = new Player(healthB, strengthB, attackB);
+        // Check if attributes are identical and then declare draw as it was mentioned in the problem statement that the player who has lower health will attach first
+        if (inputHandler.checkForDraw(playerA, playerB)) {
+            inputHandler.close();
+            return; // Exit if it's a draw
+        }
+    
 
 
         Arena arena = new Arena(playerA, playerB);

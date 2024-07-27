@@ -40,9 +40,9 @@ public class Arena {
 
         // Determine and display the winner
     if (player1.isAlive() && !player2.isAlive()) {
-        System.out.println("The winner is player1");
+        System.out.println("The winner is Player1");
     } else if (player2.isAlive() && !player1.isAlive()) {
-        System.out.println("The winner is player2");
+        System.out.println("The winner is Player2");
     } else {
         System.out.println("It's a draw!");
     }
