@@ -117,3 +117,17 @@ This document provides the unit test cases for the Magical Arena Game project. E
 
 - Error message indicating invalid input: "Health, Strength, and Attack values must not exceed 100."
 - The game should not start.
+
+### Test Case 9: Same Health, Less Attack and Defense Attacks First
+**Input:**
+
+- Player A: Health = 70, Strength = 30, Attack = 40
+- Player B: Health = 70, Strength = 35, Attack = 45
+
+**Expected Output:**
+
+- Player A attacks Player B first because Player A has less attack and defense values.
+- Player B attacks Player A.
+- Continue until one player's health reaches 0.
+- **Final Status:**
+  - Determined by the sequence and outcome of attacks.
