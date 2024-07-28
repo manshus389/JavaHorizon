@@ -27,18 +27,23 @@ public class Arena {
     }
 
     private Player determineFirstAttacker() {
-        int roll1 = new Dice().roll();
-        int roll2 = new Dice().roll();
-        System.out.println("Player 1 rolls: " + roll1);
-        System.out.println("Player 2 rolls: " + roll2);
-
-        if (roll1 > roll2) {
+        if (player1.getHealth() < player2.getHealth()) {
             return player1;
-        } else if (roll2 > roll1) {
+        } else if (player2.getHealth() < player1.getHealth()) {
             return player2;
         } else {
-            // In case of a tie, re-roll
-            return determineFirstAttacker();
+            // In case of equal health, compare combined attack and defense
+            int player1Combined = player1.getAttack() + player1.getStrength();
+            int player2Combined = player2.getAttack() + player2.getStrength();
+
+            if (player1Combined < player2Combined) {
+                return player1;
+            } else if (player2Combined < player1Combined) {
+                return player2;
+            } else {
+                // If combined values are also equal, return player1 by default
+                return player1;
+            }
         }
     }
 
