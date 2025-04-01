@@ -1,5 +1,5 @@
 
-# Magical Arena Game
+# ArcaneBattles
 
 ## Overview
 
